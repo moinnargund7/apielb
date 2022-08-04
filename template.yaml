@@ -93,12 +93,11 @@ Resources:
           Cpu: 2048
           Memory: 4096
           Secrets:
-            - Name: DB_HOST
-              Value: rdsdbhost
+              ValueFrom: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/dbhost
             - Name: DB_NAME
-              Value: rdsdatabase
+              ValueFrom: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/dbname
             - Name: DB_USERNAME
-              Value: rdsdatabase
+              ValueFrom: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/dbuser
             - Name: DB_PASSWORD
               ValueFrom: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/dbdevpass
           PortMappings:
